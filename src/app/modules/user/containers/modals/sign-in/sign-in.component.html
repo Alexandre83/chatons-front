@@ -1,0 +1,31 @@
+<h3 mat-dialog-title>Inscription</h3>
+
+<mat-dialog-content>
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="w-100">
+            <input matInput placeholder="Prénom et nom" type="text" formControlName="displayName" />
+            <mat-error>{{ getErrorMessage('displayName') }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+            <input matInput placeholder="Nom d'utilisateur" type="text" formControlName="username" />
+            <mat-error>{{ getErrorMessage('username') }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+            <input matInput placeholder="Mot de passe" type="password" formControlName="password" />
+            <mat-error>{{ getErrorMessage('password') }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+            <input matInput placeholder="Email" type="email" formControlName="email" />
+            <mat-error>{{ getErrorMessage('email') }}</mat-error>
+        </mat-form-field>
+
+        <mat-dialog-actions class="m-2 d-flex justify-content-center">
+            <button mat-button type="submit" [disabled]="signinForm.invalid">
+                Inscription
+            </button>
+        </mat-dialog-actions>
+    </form>
+</mat-dialog-content>

@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+    <span routerLink="/">Chatons Project</span>
+
+    <span class="spacer"></span>
+
+    <button mat-icon-button matTooltip="Races" routerLink="/breed">
+        <i class="fas fa-filter"></i>
+    </button>
+    <button mat-icon-button matTooltip="Couleurs" routerLink="/color">
+        <i class="fas fa-swatchbook"></i>
+    </button>
+    <button mat-icon-button matTooltip="Mes chatons" routerLink="/chaton">
+        <i class="fas fa-cat"></i>
+    </button>
+    <button [matMenuTriggerFor]="(user | async) ? loggedMenu : userMenu" mat-icon-button>
+        <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #userMenu="matMenu">
+        <button (click)="openLogin()" mat-menu-item>Connexion</button>
+        <button (click)="openSubscribe()" mat-menu-item>Inscription</button>
+    </mat-menu>
+    <mat-menu #loggedMenu="matMenu">
+        <button (click)="signOut()" mat-menu-item>Déconnexion</button>
+    </mat-menu>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

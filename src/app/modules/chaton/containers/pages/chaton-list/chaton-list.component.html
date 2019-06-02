@@ -1,0 +1,33 @@
+<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="color">
+        <th *matHeaderCellDef mat-header-cell>Couleur</th>
+        <td *matCellDef="let element" mat-cell>{{ element.color.name }}</td>
+    </ng-container>
+
+    <!-- Breed Column -->
+    <ng-container matColumnDef="breed">
+        <th *matHeaderCellDef mat-header-cell>Race</th>
+        <td *matCellDef="let element" mat-cell>{{ element.breed.name }}</td>
+    </ng-container>
+
+    <!-- Birthdate Column -->
+    <ng-container matColumnDef="birthDate">
+        <th *matHeaderCellDef mat-header-cell>Date de naissance</th>
+        <td *matCellDef="let element" mat-cell>{{ element.birthDate | date: 'dd/MM/yyyy' }}</td>
+    </ng-container>
+
+    <!-- IMG Column -->
+    <ng-container matColumnDef="img">
+        <th *matHeaderCellDef mat-header-cell>Image</th>
+        <td *matCellDef="let element" mat-cell>
+            <img [src]="domSanitizationService.bypassSecurityTrustUrl(element.img)" />
+        </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+</table>
